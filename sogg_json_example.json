@@ -1,0 +1,44 @@
+{
+    "TYPES": {
+        "CHAP": "Chapters",
+        "CHAR": "Characters"
+    },
+
+    "__CHARACTERS__": null,
+    "ALANA": {
+        "name" : "Alana",
+        "type": ["CHAR"],
+        "reln": {
+            "LANTIR": ["attracted to", "extends jokes of"],
+            "HUNIR": ["is half"],
+            "DELK": ["is half"],
+            "FLATULENT_SLUG" : ["visited"]
+        },
+        "description": "Beautiful woman, 30 years old, long black hair, lavender fin atop her head. She is kind. From a portal, she can shoot a ray that heals living people and weakens undead monsters.",
+        "image": "D:/docs/tereya/images/reference/alana.jpg"
+    },
+    "LANTIR": {
+        "name": "Lantir Elderain",
+        "type": ["CHAR"],
+        "reln": {
+            "ALANA": ["Finds beautiful"],
+            "HUNIR": ["is a"]
+        }        
+    },
+
+    "__CHAPTERS__": null,
+    "BENEATH_LIBRARY": {
+        "name" : "Chp 001 Beneath the Library",
+        "type": ["CHAP"],
+        "reln": {
+            "Includes scenes": ["LIBRARY_AND_THE_VAULT"]
+        }
+    },
+
+    "__SCENES__": null,
+    "LIBRARY_AND_THE_VAULT": {
+        "name" : "0010 The Library & the Vault",
+        "type": ["SCENE"]
+    }
+
+}

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Subject-Object Graph Generator</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="jquery-ui-1.13.2/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="favicon_io/site.webmanifest">
+</head>
+<body>
+    <script src="jquery-3.6.4.min.js"></script>
+    <script src="jquery-ui-1.13.2/jquery-ui.min.js"></script>
+    <script src="common.js"></script>
+    <script src="sogg.js"></script>
+
+    <div id="website_header">
+        <span class="style_menu_item" onclick="location.href = '../index.html';">Heroes of Teraya</span>
+        <span class="style_menu_item_selected">Free Writing Tool - SOGG</span>
+    </div>
+
+    <table style="width:100%;background-color: #222e1d;">
+        <tr>
+            <td style="padding-right:10px;"><img src="img/sogg4.png" height="18" /></td>
+            <td colspan="2" style="text-align: right; color: #888;">Reminder -- This tool does not save your data.</td>
+        </tr>
+        <tr>
+            <td style="text-align: left;"><div class="style_action" onclick="popup_instructions();">Instructions</div></td>
+            <td style="text-align: center;"><div class="style_action" onclick="popup_dialog_graph_explanation();">Explanation of graph</div></td>
+            <td style="text-align: right;"><div class="style_action" onclick="popup_privacy();">Privacy policy and Rights</div></td>            
+        </tr>
+    </table>    
+
+    <table style="width:100%">
+        <tr>
+            <td id="promo" style="text-align:center;">
+                <div>Coming Soon!</div>
+                <div>My debut fantasy novel</div>
+                <div>&nbsp;</div>
+                <div class="style_clickable_book_link" onclick="location.href = '../index.html';">
+                    <div style="color: #e0dd24">Heroes of Teraya</div>
+                    Tyranny of the Necromancer
+                </div>
+            </td>
+            <td>
+                <textarea rows="7" id="input_text"></textarea>
+            </td>
+            <td style="width: 146px; padding-left: 5px;">
+                <button type="button" class="css-button" onclick="gen_chart();">
+                    <span class="css-button-text">Generate chart</span>
+                </button>               
+                <button type="button" class="css-button" onclick="gen_json();">
+                    <span class="css-button-text">Generate JSON</span>
+                </button>               
+                <button type="button" class="css-button" onclick="gen_ai();">
+                    <span class="css-button-text">Generate AI input</span>
+                </button>               
+            </td>
+        </tr>
+    </table>
+
+    <table id="table_chart" class="style_table_chars">
+        <tr class="tr_res">
+            <td id="cell_subj" class='style_cell_subj td_res'></td>
+            <td id="cell_ref_subj" class='style_cell_ref_subj td_res'></td>
+            <td id="other_info_about" class="style_cell_focus td_res"></td>
+            <td id="cell_ref_obj" class='style_cell_ref_obj td_res'></td>
+        </tr>
+    </table>    
+
+    <div id="div_ai_input">
+        <div id="div_ai_input_header">
+            <div class="style_ai_header">AI Input</div>
+            <div class="style_ai_subtext">Use this data to input into AI Writing Apps</div>
+        </div>
+        <textarea rows="30" id="textarea_ai_input_content" class="style_ai_textarea"></textarea>
+    </div>
+
+    <div id="div_json">
+        <div id="div_ai_input_header">
+            <div class="style_ai_header">JSON Format</div>
+            <div class="style_ai_subtext">Intermediate format for chart generation. Can be used as input for databases.</div>
+        </div>
+        <div id="div_json_content"></div>
+    </div>
+
+    <div id="dialog_instructions" title="Instructions">
+        <b>For best experience with this web app, use a large screen, not a phone.</b>
+        <br><br>
+        Basic use: 
+        <br>
+        <ul>
+            <li>Write your text as SOGG-script in your favorite editor.</li>
+            <li>Then paste it into the input box at the top of the page.</li>
+            <li>Next click the Generate button.</li>
+            <li>Then click around the generated diagram to navigate.</li>
+        </ul>
+
+        <br>
+
+        What is SOGG-Script?
+        <br>
+        <ul>
+            <li>The format for each line is Subject ; Relationship ; (optional) Object </li>
+            <li>Semicolon is a reserved character, so don't use it other than as a delimiter as shown.</li>
+            <li>Example: Bob ; likes ; Jill</li>
+            <li>In the above example: "Bob" is the subject, "likes" is the relationship and "Jill" is the object.</li>
+            <li>Another example: Bob ; is funny</li>
+            <li>In the above example: "Bob" is the subject. As there is no Object, "is funny" is treated as a description. If the Object is omitted, don't include the last semi-colon.</li>
+            <li>Any line starting with # is a comment and ignored by the generator.</li>
+        </ul>
+
+        <br>
+
+        Advanced SOGG-Script
+        <br>
+        <ul>
+            <li>You can define different for subjects. These will be grouped together.</li>
+            <li>For example: Bob ; type:character</li>
+            <li>In the above example: "Bob" is the subject, "character" is the type.</li>            
+            <li>You can define any type. However, "character" (or "char") and "location" (or "loc") have built-in distinct styles.</li>
+        </ul>
+    </div>
+
+
+    <div id="dialog_graph_explanation" title="Explanation of Graph">
+        <b>For best experience with this web app, use a large screen, not a phone.</b>
+        <br><br>
+        The Subject-Object graph is an interactive node chart. The main difference between this type of chart and one you might 
+        see on a site like <a href="https://www.freethesaurus.com/graph" target="_new">FreeThesaurus.com</a> is that the node lines have
+        custom text to explain the relationship between nodes. Because this relationship text is very important, the relatiosnhips 
+        are not drawn as lines at different angles, but horizantally with all the relationships listed clearly in bulleted lists.
+        <br><br>
+
+        <a href="img/sogg_example.png" target="new"><img src="img/sogg_example.png" width="344"/></a>
+
+        <br><br>
+        If you click on a Subject or Object, if it has a entry as a subject in your data, the Focus Subject will change to that new Subject, 
+        just as you would navigate in any node diagram.
+    </div>
+
+
+    <div id="dialog_privacy" title="Privacy policy">
+        None of your data is sent to my server, so your privacy and rights are protected. 
+        Any graphs you generate are your own and you may use them for commercial or non-commercial uses.
+        <br><br>
+        However, my source code is protected by copyright. You may not sell access to SOGG, 
+        or make a copy and host it elsewhere without my explicit written permission.
+        <br><br>
+        As SOGG does NOT save any of your data, please write and edit it in your favorite editor, 
+        and just paste it into SOGG.        
+    </div>
+
+    <div id="dialog_safe_nav_heroes" title="Are you sure?">
+        Just making sure you want to Navigate away from this page? Your changes are not saved.
+        If you made changes in the textbox that you would like to keep, copy them and paste them elsewhere.
+    </div>
+
+    <div id="footer">
+        <span class="style_footer_item">Tileable textures from <a href="https://www.the3rdsequence.com/texturedb" target="_blank" rel="noopener noreferrer">texturedb</a></span>
+        <span class="style_footer_item"><a href='https://www.free-website-hit-counter.com'><img src='https://www.free-website-hit-counter.com/c.php?d=9&id=147695&s=36' border='0' alt='Free Website Hit Counter'></a><small> &nbsp;&nbsp;&nbsp; Counter provided by <a href='https://www.free-website-hit-counter.com' title="Free Website Hit Counter">Free-website-hit-counter.com</a></small></span>
+        <span class="style_footer_item">Subject-Object Graph Generator (C) Daniel Burke</span>
+    </div>    
+</body>
+</html>
+
