@@ -17,48 +17,6 @@ var map_subj_name_to_index = {};        // name to index
 // These can be used for presenting the data differently
 // Also, the center list of connections wil be ordered by type, name
 
-const STARTING_INPUT_TEXT = `// Save your text separately and paste it here.  This app does not save your input!
-# Characters
-
-## Adramar
-sex: m
-is a : warhorse
-is the steed of : Untherdred
-was introduced in : C29_S01 Unth — Save the King
-
-## Alana
-sex: f
-Secretly works for the Arcane Order, anxious, has a Lavender fin
-img: D:/docs/tereya/images/reference/alana.jpg
-is attracted to : Lantir
-extends jokes of : Lantir
-is half : Delk, Hunir
-visited : Flatulent Slug
-
-## Untherdred
-sex:m
-King of : Kingdom of Yondle
-is a : Hunir
-wields : Dawnbreaker
-
-
-# Locations
-
-## Flatulent Slug
-Trading post
-is in : Ikthi
-
-
-# Races
-
-## Hunir
-Just like Humans except they can be wizards, and have a minor skin marking
-
-## Delk
-Have dragonscale hair, gold or green skin tone and almond eyes. Their whole body glows when excited and have rush of adrenaline.
-`;
-
-
 // Methods
 function clicked_subj(_i_subj) {
     $("#other_info_about").html(gen_focused_subj_info(_i_subj));
@@ -485,16 +443,17 @@ $(document).ready(function() {
     $("#dialog_instructions").dialog({  
         autoOpen: false,
         dialogClass: 'style_dialog',
-        minWidth: 370
+        minWidth: 600
      });
      $("#dialog_graph_explanation").dialog({  
         autoOpen: false,
         dialogClass: 'style_dialog',
-        minWidth: 370
+        minWidth: 600
      });
     $("#dialog_privacy").dialog({  
         autoOpen: false,
-        dialogClass: 'style_dialog'
+        dialogClass: 'style_dialog',
+        minWidth: 600
      });
      $("#dialog_safe_nav_heroes").dialog({  
         autoOpen: false,    

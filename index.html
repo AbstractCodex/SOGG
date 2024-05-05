@@ -16,6 +16,7 @@
     <script src="jquery-3.6.4.min.js"></script>
     <script src="jquery-ui-1.13.2/jquery-ui.min.js"></script>
     <script src="common.js"></script>
+    <script src="starting_example_input.md"></script>
     <script src="sogg.js"></script>
 
     <div id="website_header">
@@ -94,7 +95,7 @@
         Basic use: 
         <br>
         <ul>
-            <li>Write your text as SOGG-script in your favorite editor.</li>
+            <li>Write your text as SOGG markdown in your favorite editor.</li>
             <li>Then paste it into the input box at the top of the page.</li>
             <li>Next click the Generate button.</li>
             <li>Then click around the generated diagram to navigate.</li>
@@ -102,27 +103,30 @@
 
         <br>
 
-        What is SOGG-Script?
+        What is SOGG markdown?
         <br>
         <ul>
-            <li>The format for each line is Subject ; Relationship ; (optional) Object </li>
-            <li>Semicolon is a reserved character, so don't use it other than as a delimiter as shown.</li>
-            <li>Example: Bob ; likes ; Jill</li>
-            <li>In the above example: "Bob" is the subject, "likes" is the relationship and "Jill" is the object.</li>
-            <li>Another example: Bob ; is funny</li>
-            <li>In the above example: "Bob" is the subject. As there is no Object, "is funny" is treated as a description. If the Object is omitted, don't include the last semi-colon.</li>
-            <li>Any line starting with # is a comment and ignored by the generator.</li>
+            <li>Markdown is a common human-readable text format that can be displayed as formatted text.</li>
+            <li>For SOGG, we use a variant of that format.</li>
+            <li>For SOGG we have Categories and Subjects.</li>
         </ul>
-
+        <br><br>Example:
         <br>
+        <br># Characters
+        <br>## David
+        <br>A powerful king of Israel.
+        <br>role: King
+        <br><br>
 
-        Advanced SOGG-Script
-        <br>
+        In the above example:
         <ul>
-            <li>You can define different for subjects. These will be grouped together.</li>
-            <li>For example: Bob ; type:character</li>
-            <li>In the above example: "Bob" is the subject, "character" is the type.</li>            
-            <li>You can define any type. However, "character" (or "char") and "location" (or "loc") have built-in distinct styles.</li>
+            <li>Characters is the Category.</li>
+            <li>David is an Subjects in that Category.</li>
+            <li>Text under David will be interpreted as description.</li>
+            <li>Colons are a special character. This is the key feature of SOGG. Text to the left of a colon is the relationship. You can write any relationship you want.</li>
+            <li>Text after the relationship is the Object of the relationship. </li>
+            <li>Ideally, the Object of a relationship will also be a Subject defined elsewhere. If so, it will automatically become a clickable chart link.</li>
+            <li>You can have multiple Objects in a relationship. Separate them by commas.</li>
         </ul>
     </div>
 
@@ -134,9 +138,6 @@
         see on a site like <a href="https://www.freethesaurus.com/graph" target="_new">FreeThesaurus.com</a> is that the node lines have
         custom text to explain the relationship between nodes. Because this relationship text is very important, the relatiosnhips 
         are not drawn as lines at different angles, but horizantally with all the relationships listed clearly in bulleted lists.
-        <br><br>
-
-        <a href="img/sogg_example.png" target="new"><img src="img/sogg_example.png" width="344"/></a>
 
         <br><br>
         If you click on a Subject or Object, if it has a entry as a subject in your data, the Focus Subject will change to that new Subject, 

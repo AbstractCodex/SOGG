@@ -41,7 +41,7 @@ https://abstract-codex.com/sogg
 
 ## Anything else I should know?
 
-By default the page loads a small example of characters and other subjectas and objects. Click the Generate button to see the graph and click around the graph to navigate your data. Replace the data in the text box with your own and click generate again.
+By default the page loads a small example of characters and other subjects and objects. Click the Generate button to see the graph and click around the graph to navigate your data. Replace the data in the text box with your own and click generate again.
 
 SOGG does NOT save any of your data. So, please write and edit it in your favorite editor, and just paste it into SOGG. None of your data is sent to my server, so your privacy and rights are protected. Any graphs you generate are your own and you may use them for commercial or non-commercial uses. However, my source code is protected by copyright. You may not sell access to SOGG, or make a copy and host it elsewhere without my explicit written permission.
 
