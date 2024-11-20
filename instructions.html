@@ -4,97 +4,37 @@
     <title>Subject-Object Graph Generator</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="description" content="Abstract Codex: Subject-Object Graph Generator (SOGG). This has a variety of uses, including authors mapping relationships of characters, locations, and more. I wrote it to help organizae and view my data for my novel, Heroes of Teraya." />
-    <meta name="keywords" content="webapp, node, relationship, graph, author, tool, writing, navigate" />
+    <meta name="description" content="SOGG Instructions" />
     <meta name="author" content="Daniel Burke">
-    <link rel="stylesheet" href="jquery-ui-1.13.2/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="style.css" />
     <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon-16x16.png">
 </head>
 <body>
-    <script src="starting_example_input.js"></script>
-    <script src="jquery-3.6.4.min.js"></script>
-    <script src="jquery-ui-1.13.2/jquery-ui.min.js"></script>
-    <script src="common.js"></script>
-    <script src="sogg.js"></script>
-
     <div id="header_area">
         <table style="width:100%; height:140px;">
             <tr>
                 <td style="width:30%; padding: 0 15px; text-align: left;">
-                    <span class="style_pub_title" onclick="window.open('../index.html', '_blank');">Abstract<br/>Codex</span>
+                    <span class="style_pub_title" onclick="location='../index.html'">Abstract<br/>Codex</span>
                 </td>
                 <td style="text-align:center; vertical-align: middle;">
                     <div class="style_main_title" onclick="location='./index.html'">Subject Object Graph Generator</div>
-                    <div class="style_reminder">Reminder: This tool does not save your data.</div>
+                    <div class="style_reminder">These instructions may be in a new browser tab.</div>
                 </td>
                 <td style="width:30%; padding: 0 15px; text-align: right;">
-                    <div style="padding: 5px 0 10px 5px;"><span class="style_header_link_selected">Home</span></div>
+                    <div style="padding: 5px 0 10px 5px;"><span class="style_header_link" onclick="location.href='index.html'">Home</span></div>
                     <div style="padding: 5px 0 5px 5px;"><span class="style_header_link" onclick="window.open('../signup.html', '_blank');">Signup for<br/>Newsletter</span></div>
-                    <div style="padding: 10px 0 5px 5px;"><span class="style_header_link" onclick="window.open('instructions.html', '_blank');">Instructions</span></div>
+                    <div style="padding: 10px 0 5px 5px;"><span class="style_header_link_selected" onclick="window.open('instructions.html', '_blank');">Instructions</span></div>
                 </td>
             </tr>
         </table>
     </div>
 
-    <div id="div_content_when_too_small">
-        The SOGG web app is designed for a desktop or tablet. This display is too small to use this app.
-    </div>
+    <div id="div_instructions">
 
-    <div id="div_content_when_large_enough">
-        <table style="width:100%">
-            <tr>
-                <td id="promo" style="text-align:center;">
-                    <div>Coming Soon!</div>
-                    <div>My debut fantasy novel</div>
-                    <div class="style_book_title" style="text-align:center; margin-top: 10px;" onclick="window.open('../HeroesOfTeraya/index.html', '_blank');">Heroes of<br/>Teraya</div>
-                </td>
-                <td>
-                    <textarea rows="7" id="input_text"></textarea>
-                </td>
-                <td style="width: 146px; padding-left: 5px;">
-                    <button type="button" class="css-button" onclick="gen_chart();">
-                        <span class="css-button-text">Generate chart</span>
-                    </button>               
-                    <button type="button" class="css-button" onclick="gen_json();">
-                        <span class="css-button-text">Generate JSON</span>
-                    </button>               
-                    <button type="button" class="css-button" onclick="gen_ai();">
-                        <span class="css-button-text">Generate AI input</span>
-                    </button>               
-                </td>
-            </tr>
-        </table>
+        <h1>Usage</h1>
 
-        <table id="table_chart" class="style_table_chars">
-            <tr class="tr_res">
-                <td id="cell_subj" class='style_cell_subj td_res'></td>
-                <td id="cell_ref_subj" class='style_cell_ref_subj td_res'></td>
-                <td id="other_info_about" class="style_cell_focus td_res"></td>
-                <td id="cell_ref_obj" class='style_cell_ref_obj td_res'></td>
-            </tr>
-        </table>    
-
-        <div id="div_ai_input">
-            <div id="div_ai_input_header">
-                <div class="style_ai_header">AI Input</div>
-                <div class="style_ai_subtext">Use this data to input into AI Writing Apps</div>
-            </div>
-            <textarea rows="30" id="textarea_ai_input_content" class="style_ai_textarea"></textarea>
-        </div>
-
-        <div id="div_json">
-            <div id="div_ai_input_header">
-                <div class="style_ai_header">JSON Format</div>
-                <div class="style_ai_subtext">Intermediate format for chart generation. Can be used as input for databases.</div>
-            </div>
-            <div id="div_json_content"></div>
-        </div>
-    </div>
-
-    <div id="dialog_instructions" title="Instructions">
         <b>This web app only works on a large screen, like a desktop or tablet.</b>
         <br><br>
         Basic use: 
@@ -133,11 +73,8 @@
             <li>Ideally, the Object of a relationship will also be a Subject defined elsewhere. If so, it will automatically become a clickable chart link.</li>
             <li>You can have multiple Objects in a relationship. Separate them by commas.</li>
         </ul>
-    </div>
 
-
-    <div id="dialog_graph_explanation" title="Explanation of Graph">
-        <b>For best experience with this web app, use a large screen, not a phone.</b>
+        <h1>Chart</h1>
         <br><br>
         The Subject-Object graph is an interactive node chart. The main difference between this type of chart and one you might 
         see on a site like <a href="https://www.freethesaurus.com/graph" target="_new">FreeThesaurus.com</a> is that the node lines have
@@ -147,10 +84,9 @@
         <br><br>
         If you click on a Subject or Object, if it has a entry as a subject in your data, the Focus Subject will change to that new Subject, 
         just as you would navigate in any node diagram.
-    </div>
 
+        <h1>Privacy</h1>
 
-    <div id="dialog_privacy" title="Privacy policy">
         None of your data is sent to my server, so your privacy and rights are protected. 
         Any graphs you generate are your own and you may use them for commercial or non-commercial uses.
         <br><br>
@@ -159,11 +95,6 @@
         <br><br>
         As SOGG does NOT save any of your data, please write and edit it in your favorite editor, 
         and just paste it into SOGG.        
-    </div>
-
-    <div id="dialog_safe_nav_heroes" title="Are you sure?">
-        Just making sure you want to Navigate away from this page? Your changes are not saved.
-        If you made changes in the textbox that you would like to keep, copy them and paste them elsewhere.
     </div>
 
     <div id="footer">

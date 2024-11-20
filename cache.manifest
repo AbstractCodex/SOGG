@@ -1,0 +1,14 @@
+CACHE MANIFEST
+# v1.06 :  2024-05-05
+
+CACHE:
+jquery-3.6.4.min.js
+jquery-ui-1.13.2/jquery-ui.min.js
+img/sogg4.png
+
+NETWORK:
+index.html
+sogg.js
+style.css
+common.js
+

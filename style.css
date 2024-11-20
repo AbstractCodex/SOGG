@@ -1,12 +1,91 @@
-/* Header menu belongs on every page */
-#website_header {
-    background-color: #5e4618;
-    background-image: url("../img/tile_herringbone_parquet.png");
-    background-repeat: repeat;
+/* SOGG */
+@font-face {
+    font-family: fog;
+    src: url(fonts/foglihtenno07/FoglihtenNo07.ttf) format("truetype"), url(../fonts/foglihtenno07/FoglihtenNo07.otf) format("opentype");
+}
+
+@font-face {
+    font-family: norwester;
+    src: url(fonts/norwester/norwester.otf) format("opentype");
+}
+
+@font-face {
+    font-family: squarecaps;
+    src: url(fonts/squarecaps/SquareCaps.ttf) format("truetype");
+}
+
+@font-face {
+    font-family: spect;
+    src: url(fonts/Spectrashell.otf) format("opentype");
+}
+
+.style_book_title {
+    color: #efc350;
+    font-family: fog;
+    font-size: 26px;
+    text-align: left;
+    cursor: pointer;
+}
+.style_book_title:hover {
+    color: #fefeff;
+}
+
+.style_pub_title {
+    color: #c3c7ee;
+    font-family: squarecaps;
+    font-size: 26px;
+    text-align: left;
+    cursor: pointer;
+}
+.style_pub_title:hover {
+    color: #fefeff;
+}
+
+#header_area {
+    background-color: #19291e;
     color: #fff;
     text-align: center;
-    padding: 4px 0px;
+    padding: 0px;
+    height: 140px;
+    box-shadow: 0px 0px 20px #000000;
 }
+
+.style_main_title {
+    color: #b4c5a8;
+    font-family: spect;
+    font-size: 40px;
+    text-align: center;
+    cursor: pointer;
+}
+.style_main_title:hover {
+    color: #fefeff;
+}
+
+#div_instructions {
+    padding: 10px 30px 20px;
+}
+
+.style_header_link {
+    color: #c3eec6;
+    font-family: norwester;
+    font-size: 18px;
+    cursor: pointer;
+}
+.style_header_link:hover {
+    color: #fefeff;
+}
+.style_header_link_selected {
+    color: #92d763;
+    font-family: norwester;
+    font-size: 18px;
+}
+
+.style_reminder {
+    color: #888;
+    text-align: center;
+    margin-top:8px;
+}
+
 .style_menu_item {
     padding: 5px 16px;
     cursor: pointer;
@@ -337,46 +416,23 @@ ul {
     margin: 10px 0;
 }
 
-@media screen and (max-width:768px) {
-    /*
-    table tr > * {
-        display: block;
+#div_content_when_large_enough {
+    display: block;
+}
+#div_content_when_too_small {
+    display: none;
+    padding: 30px;
+    text-align: center;
+}
+
+@media screen and (max-width:799px) {
+    #div_content_when_large_enough {
+        display: none;
     }
-    table tr {
-        display: table-cell;
-        vertical-align: top;
+    #div_content_when_too_small {
+        display: block;        
     }
-    */
-    .tr_res > * {
-        display: block;
-    }
-    .tr_res {
-        display: table-cell;
-        vertical-align: top;
-    }
-    .td_res {
-        width: 100%;
-    }
-    .style_td_hide {
-        width:0;
-    }
-    .style_table_chars {
-        width: 100%;
-        border-spacing: 5px;
-    }
-    .style_cell_focus {
-        padding: 10px 0 10px;
-        width: 100%;
-        background-color: #3e4038;
-        text-align: left;
-        border: 1px solid #686040ea;    
-        vertical-align: top;
-    }
-    #promo {
-        padding: 2px 1px;
-        width: 127px;
-        color: #eee;
-        font-size: 12px;
-        text-align: left;
+    .style_main_title {
+        font-size: 30px;
     }
 }

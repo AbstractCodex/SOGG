@@ -10,12 +10,6 @@ var array_type_indexes_to_subj_indexes = [];
 var array_subj = [];                    // index to name
 var map_subj_name_to_index = {};        // name to index
 
-// Special Type definitions 
-// More can be added. These are specified like this:
-// Lantir ; type:character 
-// Inn ; type:location
-// These can be used for presenting the data differently
-// Also, the center list of connections wil be ordered by type, name
 
 // Methods
 function clicked_subj(_i_subj) {
@@ -32,7 +26,7 @@ function clicked_type(_i_type) {
 
 /**
  * Gen Subject List (Index List on the far left)
- * Should we automatically open teh section that has the selected item? No. Could have multiple cats
+ * Should we automatically open the section that has the selected item? No. Could have multiple cats
  * We need to open the section when clicked. To do that, we must maintain an open/closed state for each type
  * Or, we just avoid regenerating teh subj list unless gen is clicked.
  * @param {number} _i_subj The Index of which subject is selected.
